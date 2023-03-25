@@ -1,45 +1,50 @@
-const LIMITE_INFERIOR = 10000
+const LIMITE_INFERIOR = 10000;
 
 function obtenerDatosUsuario() {
-    const nombre = document.getElementById("nombre").value;
-    const numeroDePlaneta = parseInt(document.getElementById("numeroPlaneta").value);
-    if (isNaN(numeroDePlaneta)) {
-      throw new Error("El número del planeta ingresado no es válido");
-    }
-    return { nombre, numeroDePlaneta };
+  const nombre = document.getElementById("nombre").value;
+  const numeroDePlaneta = parseInt(
+    document.getElementById("numeroPlaneta").value
+  );
+  if (isNaN(numeroDePlaneta)) {
+    throw new Error("El número del planeta ingresado no es válido");
   }
-  
-  function saltosHastaPlaneta(numeroDePlaneta) {
-    if (numeroDePlaneta <= LIMITE_INFERIOR) {
-      throw new Error(
-        "Lo siento, el numero de planeta tiene que ser mayor a 10000"
-      );
-    }
-  
-    let saltosTotales = 0;
-    while (numeroDePlaneta !== 1) {
-      numeroDePlaneta % 2 === 0
-        ? (numeroDePlaneta /= 2)
-        : (numeroDePlaneta = numeroDePlaneta * 3 + 1);
-      saltosTotales++;
-    }
-    return `Número total de saltos: ${saltosTotales}`;
+  return { nombre, numeroDePlaneta };
+}
+
+function saltosHastaPlaneta(numeroDePlaneta) {
+  if (numeroDePlaneta <= LIMITE_INFERIOR) {
+    throw new Error(
+      "Lo siento, el numero de planeta tiene que ser mayor a 10000"
+    );
   }
-  
-  function manejarError(error) {
-    alert(error.message);
+
+  let saltosTotales = 0;
+  while (numeroDePlaneta !== 1) {
+    numeroDePlaneta % 2 === 0
+      ? (numeroDePlaneta /= 2)
+      : (numeroDePlaneta = numeroDePlaneta * 3 + 1);
+    saltosTotales++;
   }
-  
-  function manejarEnvioFormulario(event) {
-    event.preventDefault();
-    try {
-      const { nombreUsuario, numeroDePlaneta } = obtenerDatosUsuario();
-      const resultado = saltosHastaPlaneta(numeroDePlaneta);
-      document.getElementById("resultado").innerHTML = `${nombreUsuario}, ${resultado}`;
-    } catch (error) {
-      manejarError(error);
-    }
+  return `Número total de saltos: ${saltosTotales}`;
+}
+
+function manejarError(error) {
+  alert(error.message);
+}
+
+function manejarEnvioFormulario(event) {
+  event.preventDefault();
+  try {
+    const { nombreUsuario, numeroDePlaneta } = obtenerDatosUsuario();
+    const resultado = saltosHastaPlaneta(numeroDePlaneta);
+    document.getElementById(
+      "resultado"
+    ).innerHTML = `${nombreUsuario}, ${resultado}`;
+  } catch (error) {
+    manejarError(error);
   }
-  
-  document.getElementById("formulario").addEventListener("submit", manejarEnvioFormulario);
-  
+}
+
+document
+  .getElementById("formulario")
+  .addEventListener("submit", manejarEnvioFormulario);
