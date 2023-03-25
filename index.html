@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terricolas a la Tierra</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <form class="form" id="formulario">
+      <label for="name">Nombre:</label>
+      <input type="text" class="infos" id="nombre" name="nombre" required />
+      <div class="mario"></div>
+      <label for="email">Número del planeta:</label>
+      <input type="number" id="numeroPlaneta" name="numeroPlaneta" required />
+      <button type="submit">Calcular</button>
+      <button type="reset" id="limpiar">Limpiar</button>
+      <div>
+        <label id="resultado"></label>
+      </div>
+    </form>
+    <script src="script.js"></script>
+  </body>
+</html>
