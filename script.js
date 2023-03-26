@@ -1,17 +1,17 @@
 const LIMITE_INFERIOR = 10000;
 
 function obtenerDatosUsuario() {
-  const nombre = document.getElementById("nombre").value;
+  const nombreDeUsuario = document.getElementById("nombre").value;
   const numeroDePlaneta = parseInt(
     document.getElementById("numeroPlaneta").value
   );
   if (isNaN(numeroDePlaneta)) {
     throw new Error("El número del planeta ingresado no es válido");
   }
-  return { nombre, numeroDePlaneta };
+  return { nombreDeUsuario, numeroDePlaneta };
 }
 
-function saltosHastaPlaneta(numeroDePlaneta) {
+function contarSaltos(numeroDePlaneta) {
   if (numeroDePlaneta <= LIMITE_INFERIOR) {
     throw new Error(
       "Lo siento, el numero de planeta tiene que ser mayor a 10000"
@@ -35,11 +35,11 @@ function manejarError(error) {
 function manejarEnvioFormulario(event) {
   event.preventDefault();
   try {
-    const { nombreUsuario, numeroDePlaneta } = obtenerDatosUsuario();
-    const resultado = saltosHastaPlaneta(numeroDePlaneta);
+    const { nombreDeUsuario, numeroDePlaneta } = obtenerDatosUsuario();
+    const resultado = contarSaltos(numeroDePlaneta);
     document.getElementById(
       "resultado"
-    ).innerHTML = `${nombreUsuario}, ${resultado}`;
+    ).innerHTML = `${nombreDeUsuario}, ${resultado}`;
   } catch (error) {
     manejarError(error);
   }
